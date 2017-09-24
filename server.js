@@ -5,12 +5,15 @@ const http = require('http');
 const geocoder = require('geocoder');
 // Setup server
 const app = express();
+console.log('here', process.env)
 const bodyParser = require('body-parser');
 const server = http.createServer(app);
 const io = require('socket.io')(server);
 const Twitter = require('node-tweet-stream');// require('twitter');
-
-const credentials = require('./config/twitterConf');
+let credentials;
+if(process.env.environment !== 'production'){
+    credentials = require('./config/twitterConf');
+}
 
 const client = new Twitter({
     consumer_key: process.env.twitConsumerKey || credentials.consumer.key,

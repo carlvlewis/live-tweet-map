@@ -1,6 +1,7 @@
 (function () {
     mapboxgl.accessToken = 'pk.eyJ1Ijoid3d5bWFrIiwiYSI6IkxEbENMZzgifQ.pxk3bdzd7n8h4pKzc9zozw';
-    const socket = io('http://localhost:3000');
+    const socket = io();
+    // const socket = io('http://localhost:3000');
     let tweetTextArr = [];
     let latLngArr = [];
     let convertLngLatToGeojson = function (latLngArr) {
