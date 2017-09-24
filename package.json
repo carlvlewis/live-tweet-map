@@ -1,0 +1,21 @@
+{
+  "name": "livetweetmap",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.1",
+    "express": "^4.15.4",
+    "geocoder": "^0.2.3",
+    "google-auth-library": "^0.11.0",
+    "googleapis": "^22.1.0",
+    "node-tweet-stream": "^2.0.1",
+    "socket.io": "^2.0.3",
+    "twitter": "^1.7.1"
+  }
+}
