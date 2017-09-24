@@ -5,7 +5,6 @@ const http = require('http');
 const geocoder = require('geocoder');
 // Setup server
 const app = express();
-console.log('here', process.env)
 const bodyParser = require('body-parser');
 const server = http.createServer(app);
 const io = require('socket.io')(server);
@@ -35,15 +34,12 @@ client.on('tweet', function(tweet) {
     };
     if(tweet.coordinates && tweet.coordinates.coordinates ) {
         tweet.coordinates= tweet.coordinates.coordinates;
-        console.log(obj)
         io.emit('tweet', obj);
     } else if(tweet.user.location) {
         geocoder.geocode(tweet.user.location, (err, data) => {
             if(!err && data.results && data.results.length > 0) {
-                console.log(data.results[0].geometry)
                 let latlng = data.results[0].geometry.location;
                 obj.coordinates=[latlng.lng, latlng.lat]
-                console.log(obj);
                 io.emit('tweet', obj);
             } else {
                 io.emit('tweet', obj);
@@ -63,7 +59,6 @@ client.on('error', function (err) {
 client.track('earthquake,mexicoquake');
 
 io.on('connection', function (socket) {
-    console.log('connection')
     socket.emit('news', { hello: 'world' });
 });
 
