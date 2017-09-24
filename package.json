@@ -2,7 +2,7 @@
   "name": "livetweetmap",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -17,6 +17,6 @@
     "node": "8.4.0"
   },
   "scripts": {
-    "start": "node index.js"
+    "start": "node server.js"
   }
 }
