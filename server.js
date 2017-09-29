@@ -36,6 +36,7 @@ client.on('tweet', function(tweet) {
         tweet.coordinates= tweet.coordinates.coordinates;
         io.emit('tweet', obj);
     } else if(tweet.user.location) {
+        // geocoder lookup for user declared location for tweets that are not geolocated
         geocoder.geocode(tweet.user.location, (err, data) => {
             if(!err && data.results && data.results.length > 0) {
                 let latlng = data.results[0].geometry.location;
@@ -72,9 +73,8 @@ server.listen(app.get('port'), () => {
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
-// Api Routes
-// app.use('/api/get-towers', require('./api/getTowersInfo'));
-// app.use('/api/get-carriers-count', require('./api/getCarriersInfo'));
+// Serve js/css files under public to client
+
 app.use(express.static('public'));
 
 // All other routes should redirect to the index.html
