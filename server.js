@@ -56,7 +56,8 @@ client.on('error', function (err) {
     console.log('error!!!', err);
 });
 
-client.track('earthquake,mexicoquake');
+// client.track('earthquake,mexicoquake');
+client.track('democracy,D4DHackathon,data4democracy,civictech,govtech,techforgood');
 
 io.on('connection', function (socket) {
     socket.emit('news', { hello: 'world' });
